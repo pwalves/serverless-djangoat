@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="SWATlogo.jpeg" type="image/gif" sizes="16x16">
+
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #0057C7;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center">User Profile Card</h2>
+
+<form class="card" action= "https://s3.us-east-2.amazonaws.com/swat-website/userprofile.html" method = "get">
+
+  <h1 id="here">test</h1>
+  <script>
+   window.onload = function () {
+        var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        data = {}, tmp;
+        for (var i = 0, l = params.length; i < l; i++) {
+            tmp = params[i].split('=');
+            data[tmp[0]] = tmp[1];
+        }
+        document.getElementById('here').innerHTML = data.uname;
+   }
+  </script> 
+
+  <p class="title">user</p>
+  <div style="margin: 24px 0;">
+
+  </div>
+  <p><button>Sign Out</button></p>
+</form>
+
+</body>
+
+
+</html>
+
