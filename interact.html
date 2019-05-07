@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>SWAT game screen</title>
+        <meta name="description" content="Game interface for SWAT game">
+        <link rel="stylesheet" href="interact.css">
+    </head>
+    
+    <body>
+    
+    <menu>Choose the response you want to play by clicking corresponding choice button!</menu>
+        
+        
+        <div class="img-group">
+            
+        <figure align=left>
+            <img alt="Player image" src="img/player.png" />
+            <figcaption align=left>Player Name</figcaption>
+        </figure>
+            
+        <figure align=right>
+            <img alt="NPC image" src="img/npc.png" />
+            <figcaption align=right>NPC Name</figcaption>
+        </figure>
+        
+        </div>
+
+        
+        <p align=left id=textDia>
+        The light shining through the cracked window wakes you up. Your straw bed rustles as you shift your weight to get out. After getting dressed you open the creaky pine door and head downstairs. The innkeeper that was kind enough to give you a room late last night waves you over to the bar. “Good morning bleeping beauty. What’ll you have?”
+        </p>
+        
+        <div class="btn-group">
+            
+        <button onclick="changeText(0)">Choice 1</button>
+        <h2 id=resp1>"Whatever you got."</h2>
+            
+        </div>
+        <div class="btn-group">
+            
+        <button onclick="changeText(1)">Choice 2</button>
+        <h2 id=resp2>"Ale."</h2>
+            
+        </div>
+        <div class="btn-group">
+            
+        <button onclick="changeText(2)">Choice 3</button>
+        <h2 id=resp3>"Nothing."</h2>
+            
+        </div>
+    
+        
+        <button onclick="reset()">Reset Game</button>
+        <a href="index.html"><button>Main Menu</button></a>
+        
+        
+        <script>
+            
+        var DIALOGUES1 = [
+                "“I’ve got some bread and cheese. Why don’t you take a seat over there?” The innkeeper motioned to a wooden table in a windowless corner. You make your way over to the corner and notice that the air seems to have gotten more damp. The legs of the chairs have developed mold growths. You look back towards the bar and notice that the innkeeper walked into the kitchen to get your food. The rest of the room is flooded with morning light, but this corner remains oppressively dark.", 
+                "“Ha! Breakfast of champions huh?” The innkeeper turns around and fills a worn mug with ale from the keg behind the counter. He sets it down on the bar counter sending the beer inside sloshing. Taking the mug by the handle you take an astonishing large swig. The innkeeper smiles at you, “So when are you goin’ to start the job?”", 
+                "The innkeeper’s shoulders sag and he sighs, “We have plenty to choose from, but suit yourself.” You gather yourself and start to stride away from the counter. “Where do you think you’re going?” The innkeeper raises his voice, “ We had an agreement.”"];
+        var DIALOGUES2 = [
+            ["It is as if the chair and table exist in a musty cellar apart from the rest of the room. Despite its apparent age and misuse, the chair fails to creak or moan when you sit. You notice the innkeeper coming towards you with a loaf of bread and a small wedge of cheese on a wooden board. You can see the steam in the sunlight, but as he walks into the corner the vapors disappear. “Fresh from the oven, enjoy” The innkeeper’s smile is the only warmth in the corner, “Now, let’s talk business. I didn’t take you in last night for charity. I still have the trouble in my basement you need to deal with.”", 
+             "“Oh, that corner? Some magician or enchanter or warlock or some such thing cast a type of enclosure curse over there. It took A LOT of coin to get that place looking as good as that. It’s become one of my customers’ favorite places though. It’s next to impossible for anyone who’s not at that table to hear you, almost like you’re in a separate room. Once your skin stops crawling it’s not too bad. Anyway, I wanted to talk to you about the basement job.”", 
+             "You get up to leave the oppressive table. As you get closer to the door, you seem to be pulled back. You stop for a second to look behind you, and the table seems to be about 3 yards away, and looking forward the oak is only a yard away. Chalking it up to the dampness, you continue to the door. You can’t seem to get closer, it’s still a yard away but it looks like the distance to the table doubled. A chuckle echoes from the bar counter."], 
+            ["You picked choice 2 then 1", 
+             "You picked choice 2 then 2", 
+             "“Hello?” Your clothes are getting stained from the amount of ale you’re spilling. The innkeeper’s eyes flit from annoyed to angry to mischievous. “I’m glad you like the ale s’much. It’s brewed right next door. I know the brewer so I get access to her special stock that only a few exclusive taverns get. Ya want some more, don’t ‘cha?”"], 
+            ["You picked choice 3 then 1", "You picked choice 3 then 2", "You picked choice 3 then 3"]
+            ];
+        var DIALOGUES3 = [
+            [
+            ["“That’s very unfortunate, I hoped you could help.” The warmth of the man’s smile disappears and he turns around to dejectedly walk back to the counter. The dampness of the corner is getting heavier. “I hope you enjoyed your stay.” It’s getting harder to breathe. The few puffs you can muster form misty clouds in the air. The mist starts condensing and falls to the ground as ice pellets. “I’m sorry.” Your chest is too heavy to rise and you can feel a chilling, stabbing pain in your throat and lungs. By the time your fingertips become cold you’re on the floor, frozen from the inside out.", 
+             "“Fantastic! I knew you could help!” The dampness disappears as you follow the man to the tavern’s basement door. “I need you to do some dusting. Much too many spiderwebs. I’d do it myself, but a good bunch of them are under the stairs and my back’d kill me if I tried.” He hands you a broom and you set off down the wooden stairs. He didn’t give you a lantern, but it doesn’t look like it’s a problem. A greenish light is streaming in from somewhere. At the base of the steps you still fail to find the source of the light. For a basement, it’s very spacious and warm. Under the stairs you find a few spider webs, but hardly enough to be a “trouble”. A few minutes later you finish swatting the webs, and turn around to leave. The light appears to be getting brighter, and the space is getting warmer. At the base of the stairs you look up and fail to spot the door. In a panic you look around and the wide open basement has constricted. The light is getting brighter. Two at a time you run up the stairs, until you arrive at a smooth brick wall. Your hands, sweaty from the now intense heat, desperately seek a handle since your eyes have become useless in the light. You spin around only to feel the wall on each side.", 
+             "You picked choice 1 then 1 then 3"], 
+            ["You picked choice 1 then 2 then 1", "You picked choice 1 then 2 then 2", "You picked choice 1 then 2 then 3"], 
+            ["You picked choice 1 then 3 then 1", "You picked choice 1 then 3 then 2", "You picked choice 1 then 3 then 3"]
+            ],
+            [
+            ["You picked choice 2 then 1 then 1", "You picked choice 2 then 1 then 2", "You picked choice 2 then 1 then 3"], 
+            ["You picked choice 2 then 2 then 1", "You picked choice 2 then 2 then 2", "You picked choice 2 then 2 then 3"], 
+            ["You try to lower your hands but the ale is just too good. The mug surely should have been emptied in a minute, but 5 minutes in and there’s still more to enjoy. Is it really joy you feel now? The innkeeper’s glare has softened. He leaves you to your own devices and serves a new patron. Still you drink. It has stopped being of your accord. You have lost feeling in your body, your head is hazy. Not even the panic of your situation can save you.", 
+             "You picked choice 2 then 3 then 2", 
+             "A haze comes over you. You’re only vaguely aware of the innkeeper. You’re only vaguely aware of yourself. You can only focus on the ale. You catch a glimpse of the innkeeper’s smirk, but it becomes an insignificant sentence in your mind where the novel of ale is being written. Half an hour passes and the pool of ale on the ground is where this life will be spent."]
+            ],
+            [
+            ["You picked choice 3 then 1 then 1", "You picked choice 3 then 1 then 2", "You picked choice 3 then 1 then 3"], 
+            ["You picked choice 3 then 2 then 1", "You picked choice 3 then 2 then 2", "You picked choice 3 then 2 then 3"], 
+            ["You picked choice 3 then 3 then 1", "You picked choice 3 then 3 then 2", "You picked choice 3 then 3 then 3"]
+            ]
+            ];
+        
+        var RESPONSES1 = [
+            ["Take a seat and wait  for the bread.", "Walk over to the bar to ask the innkeeper about the corner.", "Walk to the door to leave."],
+            ["“What!?”", "“Tomorrow.”", "You’re too focused chugging your ale to answer."],
+            ["“I was… uh…”", "“Just stretching my legs a bit, don’t worry.”", "“Thank you for your hospitality, but I’ll be on my way now.”"]
+            ];
+        var RESPONSES2 = [
+            [
+            ["“I don’t recall making any type of deal, and I have no interest in making a new one.”", "“I can help you with your basement, no problem.”", "You grab a piece of bread first. You’re starving after all."],
+            ["“Basement job?”", "“Oh right… the basement job…”", "Sorry, but I want nothing to do with curses, especially one as weird as that one."],
+            ["Run to the door.", "Go back to the table.", "Confront the innkeeper."]
+            ],
+            [
+            ["Resp 2-1-1", "Resp 2-1-2", "Resp 2-1-3"],
+            ["Resp 2-2-1", "Resp 2-2-2", "Resp 2-2-3"],
+            ["Pry the mug from your lips to refuse.", "Nod yes.", "You’re too focused on chugging your ale to answer."]
+            ],
+            [
+            ["Resp 3-1-1", "Resp 3-1-2", "Resp 3-1-3"],
+            ["Resp 3-2-1", "Resp 3-2-2", "Resp 3-2-3"],
+            ["Resp 3-3-1", "Resp 3-3-2", "Resp 3-3-3"]
+            ]
+            ];
+        var RESPONSES3 = [
+            [
+            [
+            ["Resp 1-1-1-1", "Resp 1-1-1-2", "Resp 1-1-1-3"],
+            ["Resp 1-1-2-1", "Resp 1-1-2-2", "Resp 1-1-2-3"],
+            ["Resp 1-1-3-1", "Resp 1-1-3-2", "Resp 1-1-3-3"]
+            ],
+            [
+            ["Resp 1-2-1-1", "Resp 1-2-1-2", "Resp 1-2-1-3"],
+            ["Resp 1-2-2-1", "Resp 1-2-2-2", "Resp 1-2-2-3"],
+            ["Resp 1-2-3-1", "Resp 1-2-3-2", "Resp 1-2-3-3"]
+            ],
+            [
+            ["Resp 1-3-1-1", "Resp 1-3-1-2", "Resp 1-3-1-3"],
+            ["Resp 1-3-2-1", "Resp 1-3-2-2", "Resp 1-3-2-3"],
+            ["Resp 1-3-3-1", "Resp 1-3-3-2", "Resp 1-3-3-3"]
+            ]
+            ],
+            [
+            [
+            ["Resp 2-1-1-1", "Resp 2-1-1-2", "Resp 2-1-1-3"],
+            ["Resp 2-1-2-1", "Resp 2-1-2-2", "Resp 2-1-2-3"],
+            ["Resp 2-1-3-1", "Resp 2-1-3-2", "Resp 2-1-3-3"]
+            ],
+            [
+            ["Resp 2-2-1-1", "Resp 2-2-1-2", "Resp 2-2-1-3"],
+            ["Resp 2-2-2-1", "Resp 2-2-2-2", "Resp 2-2-2-3"],
+            ["Resp 2-2-3-1", "Resp 2-2-3-2", "Resp 2-2-3-3"]
+            ],
+            [
+            ["Resp 2-3-1-1", "Resp 2-3-1-2", "Resp 2-3-1-3"],
+            ["Resp 2-3-2-1", "Resp 2-3-2-2", "Resp 2-3-2-3"],
+            ["Resp 2-3-3-1", "Resp 2-3-3-2", "Resp 2-3-3-3"]
+            ]
+            ],
+            [
+            [
+            ["Resp 3-1-1-1", "Resp 3-1-1-2", "Resp 3-1-1-3"],
+            ["Resp 3-1-2-1", "Resp 3-1-2-2", "Resp 3-1-2-3"],
+            ["Resp 3-1-3-1", "Resp 3-1-3-2", "Resp 3-1-3-3"]
+            ],
+            [
+            ["Resp 3-2-1-1", "Resp 3-2-1-2", "Resp 3-2-1-3"],
+            ["Resp 3-2-2-1", "Resp 3-2-2-2", "Resp 3-2-2-3"],
+            ["Resp 3-2-3-1", "Resp 3-2-3-2", "Resp 3-2-3-3"]
+            ],
+            [
+            ["Resp 3-3-1-1", "Resp 3-3-1-2", "Resp 3-3-1-3"],
+            ["Resp 3-3-2-1", "Resp 3-3-2-2", "Resp 3-3-2-3"],
+            ["Resp 3-3-3-1", "Resp 3-3-3-2", "Resp 3-3-3-3"]
+            ]
+            ]
+            ];
+            
+        var userResponses = [];
+        var responseNum = 0;            
+            
+        function changeText(optionNum){
+            
+            responseNum = responseNum + 1;
+            userResponses.push(optionNum);
+            //currDia = "";
+            
+            switch(responseNum){
+                case 1:
+                    currDia = DIALOGUES1[parseInt(userResponses[0])];
+                    resp1 = RESPONSES1[parseInt(userResponses[0])][0];
+                    resp2 = RESPONSES1[parseInt(userResponses[0])][1];
+                    resp3 = RESPONSES1[parseInt(userResponses[0])][2];
+                    break;
+                case 2:
+                    currDia = DIALOGUES2[parseInt(userResponses[0])][parseInt(userResponses[1])];
+                    resp1 = RESPONSES2[parseInt(userResponses[0])][parseInt(userResponses[1])][0];
+                    resp2 = RESPONSES2[parseInt(userResponses[0])][parseInt(userResponses[1])][1];
+                    resp3 = RESPONSES2[parseInt(userResponses[0])][parseInt(userResponses[1])][2];
+                    break;
+                case 3:
+                    currDia = DIALOGUES3[parseInt(userResponses[0])][parseInt(userResponses[1])][parseInt(userResponses[2])];
+                    
+                    resp1 = "";
+                    resp2 = "";
+                    resp3 = "";
+                    
+                    /*
+                    resp1 = RESPONSES3[parseInt(userResponses[0])][parseInt(userResponses[1])][parseInt(userResponses[2])][0];
+                    resp2 = RESPONSES3[parseInt(userResponses[0])][parseInt(userResponses[1])][parseInt(userResponses[2])][1];
+                    resp3 = RESPONSES3[parseInt(userResponses[0])][parseInt(userResponses[1])][parseInt(userResponses[2])][2];
+                    */
+                    
+                    break;
+                default:
+                    resp1 = "";
+                    resp2 = "";
+                    resp3 = "";
+                    break;
+            }
+            
+            document.getElementById("textDia").innerHTML = currDia;
+            document.getElementById("resp1").innerHTML = resp1;
+            document.getElementById("resp2").innerHTML = resp2;
+            document.getElementById("resp3").innerHTML = resp3;
+            
+        }
+        
+            function reset(){
+                
+                userResponses = [];
+                responseNum = 0;  
+                document.getElementById("textDia").innerHTML = "The light shining through the cracked window wakes you up. Your straw bed rustles as you shift your weight to get out. After getting dressed you open the creaky pine door and head downstairs. The innkeeper that was kind enough to give you a room late last night waves you over to the bar. “Good morning bleeping beauty. What’ll you have?”";
+                document.getElementById("resp1").innerHTML = "”Whatever you got.”";
+                document.getElementById("resp2").innerHTML = "”Ale”";
+                document.getElementById("resp3").innerHTML = "”Nothing”";
+            }
+        
+        </script>
+    
+    </body>
+    
+</html>

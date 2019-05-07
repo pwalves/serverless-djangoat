@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="img/SWATlogo.jpeg" type="image/gif" sizes="16x16">
+
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+    
+    
+.btn-group button, a{
+    background-color: white; 
+    border: none;
+    color: black; 
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 24px; 
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.btn-group button:hover {
+  background-color: lightgrey;
+}
+
+.btn-group button:active {
+  background-color: seagreen;
+}
+    
+    
+    
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center">My Profile</h2>
+
+<form class="card" action= "userprofile.html" method = "get">
+
+  <h1 id="here">test</h1>
+  <script>
+   window.onload = function () {
+        var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        data = {}, tmp;
+        for (var i = 0, l = params.length; i < l; i++) {
+            tmp = params[i].split('=');
+            data[tmp[0]] = tmp[1];
+        }
+        document.getElementById('here').innerHTML = data.uname;
+   }
+  </script> 
+
+  <p class="title">user</p>
+    
+</form>
+<div class="btn-group" style="align: center">
+        
+    <a href="index.html"><button>Continue</button></a>
+    <a href="login.html"><button>Sign Out</button></a>
+    
+</div>
+
+
+</body>
+
+
+</html>
+

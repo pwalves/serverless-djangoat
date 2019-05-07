@@ -1,0 +1,85 @@
+html {
+    background: white;
+    background-image: linear-gradient(270deg, darkslategray 0%, seagreen 100%);
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background: white;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    color: #545454;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 2em 2em 4em;
+}
+
+h1 {
+    background-color: white; 
+    border-color: slategray;
+    color: black; 
+    padding-left: 5px;
+    font-size: 16px; 
+    cursor: text;
+
+}
+
+h2 {
+    background-color: white; 
+    border-color: white;
+    color: seagreen; 
+    padding-left: 5px;
+    font-size: 16px; 
+    cursor: text;
+    display: block;
+    float:left;
+
+}
+
+img {
+    background: transparent;
+    border-radius: 4px;
+    margin: 1.3em auto;
+    max-width: 40%;
+}
+
+.img-group{
+    display: flex;
+    float:none;
+}
+
+.btn-group button{
+    background-color: white; 
+    border-color: slategray;
+    color: black; 
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px; 
+    display: block;
+    cursor: pointer;
+    float: left;
+}
+
+
+
+.btn-group:after , h1:after{
+    content: "";
+    clear: left;
+    display: table;
+}
+
+.btn-group button:hover {
+  background-color: lightgrey;
+}
+
+.btn-group button:active {
+  background-color: seagreen;
+}
+
+p{
+    
+    font-size: 16px;
+    
+}
